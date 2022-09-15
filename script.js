@@ -23,11 +23,12 @@ const init = function () {
   message('Start guessing...');
   document.querySelector('.number').style.width = '15rem';
   document.querySelector('.check').disabled = false;
+  document.querySelector('.guess').blur();
 };
 
 const checkAnswer = function () {
   const guess = +document.querySelector('.guess').value;
-  console.log(guess);
+
   if (typeof guess === 'NaN') message('That is not a Number!');
   if (!guess) {
     message('⛔ No Number!');
@@ -45,6 +46,7 @@ const checkAnswer = function () {
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.check').disabled = true;
+    document.querySelector('.guess').blur();
     // if highscore is higher than score do nothing
     highestScore.textContent > +score.textContent
       ? (highestScore.textContent = highestScore.textContent)
